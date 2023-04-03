@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import EndGame from "./screens/EndGame";
+import MiddleGame from "./screens/MiddleGame";
+import StartGame from "./screens/StartGame";
 
 function App() {
+  const [currentStage, setCurrentStage] = useState("start");
+
+  const changeGameStage = () => {
+    if (currentStage === "start") {
+      setCurrentStage("game");
+    }
+    if (currentStage === "game") {
+      setCurrentStage("end");
+    }
+    if (currentStage === "end") {
+      setCurrentStage("start");
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentStage === "start" && (
+        <StartGame
+          currentStage={currentStage}
+          changeGameStage={changeGameStage}
+        />
+      )}
+      {currentStage === "game" && (
+        <MiddleGame
+          currentStage={currentStage}
+          changeGameStage={changeGameStage}
+        />
+      )}
+      {currentStage === "end" && (
+        <EndGame
+          currentStage={currentStage}
+          changeGameStage={changeGameStage}
+        />
+      )}
     </div>
   );
 }
