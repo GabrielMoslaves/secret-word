@@ -1,11 +1,20 @@
+import Button from "../../components/Button";
+
 import styles from "./styles.module.scss";
 
-const StartGame = () => {
+const StartGame = (props) => {
+  const { startGame } = props;
+
   return (
     <div className={styles.container}>
-      <h3>SecretWord</h3>
-      <h1>Clique no botão abaixo para começar!</h1>
-      <button>Começar!</button>
+      <h1>SECRET WORD</h1>
+      <h3>Clique no botão abaixo para começar!</h3>
+      <Button
+        text="começar o jogo"
+        onClick={() => {
+          startGame();
+        }}
+      />
     </div>
   );
 };

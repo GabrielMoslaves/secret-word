@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  .letter {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    display: inline-block;
+    font-size: 72px;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+    color: black;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  .blankSquare {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    display: inline-block;
+  }
+  .guessBox {
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}
