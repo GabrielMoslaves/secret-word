@@ -7,5 +7,9 @@
   background-color: purple;
   color: #fff;
   font-size: 30px;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
+}
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }

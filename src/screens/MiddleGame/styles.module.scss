@@ -6,6 +6,17 @@
     color: yellow;
     font-size: 30px;
   }
+  .tipButton {
+    background-color: #4b0082;
+    color: #ffff00;
+    border: 2px solid #ffff;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    width: fit-content;
+    align-self: center;
+    padding: 10px 15px;
+  }
   .letter {
     width: 100px;
     height: 100px;
@@ -51,4 +62,9 @@
         sans-serif;
     }
   }
+}
+
+.tipButton:hover {
+  background-color: #5e2d8e; /* roxo um pouco mais claro */
+  cursor: pointer;
 }

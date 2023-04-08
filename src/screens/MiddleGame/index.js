@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Button from "../../components/Button";
 import styles from "./styles.module.scss";
 
@@ -44,7 +44,11 @@ const MiddleGame = (props) => {
       {showTip ? (
         <h3 onClick={() => setShowTip(true)}>{tip} </h3>
       ) : (
-        <button cursor="pointer" onClick={() => setShowTip(true)}>
+        <button
+          className={styles.tipButton}
+          cursor="pointer"
+          onClick={() => setShowTip(true)}
+        >
           Revelar dica
         </button>
       )}
