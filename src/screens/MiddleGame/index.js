@@ -29,7 +29,7 @@ const MiddleGame = (props) => {
       <h1>Adivinhe a palavra!</h1>
       <h3>SCORE : {score}pts</h3>
       <h3>Dica sobre a palavra: {category.toUpperCase()} </h3>
-      <h3>Você ainda tem {guesses} tentativas</h3>
+      <h3>Você ainda tem {guesses.toString().padStart(2, "0")} tentativas</h3>
       <div className={styles.word}>
         {letters.map((item, i) => {
           return guessedLetters?.includes(item) ? (
