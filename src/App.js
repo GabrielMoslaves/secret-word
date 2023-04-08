@@ -15,6 +15,10 @@ function App() {
   const [attempt, setAttempt] = useState();
   const [wrongLetters, setWrongLetters] = useState([]);
   const [score, setScore] = useState(0);
+  const [success, setSuccess] = useState(false);
+  const [proceed, setProceed] = useState(false);
+  const [tip, setTip] = useState();
+  const [showTip, setShowTip] = useState();
 
   const changeGameStage = () => {
     if (currentStage === "start") {
@@ -38,7 +42,7 @@ function App() {
     const word =
       words[category][
         Math.floor(Math.random() * words[category].length)
-      ].toUpperCase();
+      ].name.toUpperCase();
 
     return { category, word };
   };
@@ -47,9 +51,15 @@ function App() {
     const { category, word } = randomizer();
     const letters = word.split("");
 
+    const hint = words[category].find((item) => {
+      return item.name.toUpperCase() === word;
+    }).hint;
+
     setCategory(category);
     setWord(word);
     setLetters(letters);
+    setTip(hint);
+    setShowTip(false);
 
     if (currentStage === "start") {
       changeGameStage();
@@ -66,29 +76,36 @@ function App() {
     }
   };
 
+  const resetStates = () => {
+    setGuesses(3);
+    setWrongLetters([]);
+    setGuessedLetters([]);
+    startGame();
+    setSuccess(false);
+    setProceed(false);
+    setShowTip(false);
+  };
+
   useEffect(() => {
     const uniqueLetters = (letters || []).filter((letter, index, array) => {
       return array.indexOf(letter) === index;
     });
-
-    console.log({ uniqueLetters });
     if (
       uniqueLetters.length > 0 &&
       guessedLetters.length > 0 &&
       uniqueLetters.length === guessedLetters.length
     ) {
-      debugger;
-      setGuesses(3);
-      setWrongLetters([]);
-      setGuessedLetters([]);
-      startGame();
+      setSuccess(true);
       setScore(score + 100);
+      if (proceed) {
+        resetStates();
+      }
     }
 
     if (guesses <= 0) {
       changeGameStage();
     }
-  }, [guessedLetters, guesses]);
+  }, [guessedLetters, guesses, proceed]);
 
   return (
     <div className="App">
@@ -101,6 +118,12 @@ function App() {
       )}
       {currentStage === "game" && (
         <MiddleGame
+          showTip={showTip}
+          setShowTip={setShowTip}
+          tip={tip}
+          success={success}
+          proceed={proceed}
+          setProceed={setProceed}
           score={score}
           verifyLetter={verifyLetter}
           wrongLetters={wrongLetters}
