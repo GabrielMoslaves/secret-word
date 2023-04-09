@@ -29,11 +29,11 @@ function App() {
     }
     if (currentStage === "end") {
       setCurrentStage("start");
+      setScore(0);
+      setGuesses(3);
+      setGuessedLetters([]);
+      setWrongLetters([]);
     }
-    setGuesses(3);
-    setGuessedLetters([]);
-    setWrongLetters([]);
-    setScore(0);
   };
 
   const randomizer = () => {
@@ -96,9 +96,15 @@ function App() {
       uniqueLetters.length === guessedLetters.length
     ) {
       setSuccess(true);
-      setScore(score + 100);
+
       if (proceed) {
         resetStates();
+      } else {
+        if (showTip) {
+          setScore(score + 30);
+        } else {
+          setScore(score + 100);
+        }
       }
     }
 

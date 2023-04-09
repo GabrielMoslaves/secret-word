@@ -60,7 +60,7 @@ const MiddleGame = (props) => {
         </span>{" "}
         tentativas
       </h3>
-      <div className={styles.word}>
+      <div style={{ paddingBottom: "40px" }}>
         {letters.map((item, i) => {
           return guessedLetters?.includes(item) ? (
             <span key={i} className={success ? styles.success : styles.letter}>

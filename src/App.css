@@ -1,5 +1,5 @@
 .App {
-  padding: 100px;
+  padding-top: 100px;
   background: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.685)),
     url("/public/images/silvio.jpg");
   background-size: cover;
