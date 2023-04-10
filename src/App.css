@@ -4,7 +4,6 @@
     url("/public/images/silvio.jpg");
   background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat;
   justify-content: center;
   display: flex;
   width: 100%;
@@ -15,7 +14,7 @@
 
 h1 {
   margin: 0;
-  font-size: 70px;
+  font-size: 60px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
@@ -27,4 +26,10 @@ h2 {
 h3 {
   font-size: 30px;
   margin: 0;
+}
+
+@media screen and (max-height: 739px) {
+  .App {
+    height: auto;
+  }
 }
