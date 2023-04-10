@@ -144,6 +144,7 @@ function App() {
       )}
       {currentStage === "end" && (
         <EndGame
+          word={word}
           score={score}
           currentStage={currentStage}
           changeGameStage={changeGameStage}
